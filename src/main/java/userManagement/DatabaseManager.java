@@ -5,37 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager {
-    private static final String URL = "jdbc:mysql://localhost:3306/usermanagement";
-    private static final String USERNAME = "Admin";
-    private static final String PASSWORD = "54321";
-    private Connection connection;
+    private static final String URL = "jdbc:mysql://localhost:3306/itf";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
 
     // Constructorul clasei
     public DatabaseManager() {
+    }
+
+    public Connection openConnection() {
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Conexiune la baza de date realizată cu succes!");
+            return connection;
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Conexiunea la baza de date a eșuat!");
         }
-    }
-
-    // Metodă pentru închiderea conexiunii la baza de date
-    public void closeConnection() {
-        try {
-            if (connection != null) {
-                connection.close();
-                System.out.println("Conexiune închisă cu succes!");
-            }
-        } catch (SQLException e) {
-            System.out.println("Eroare la închiderea conexiunii!");
-        }
+        return null;
     }
 
     // Metodă pentru adăugarea unui utilizator în baza de date
     public void addUser(User user) {
-        try {
+
+        try (Connection connection = openConnection()) {
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO users (id, name, surname, email, age) VALUES (?, ?, ?, ?, ?)");
             statement.setInt(1, user.getId());
@@ -51,7 +44,7 @@ public class DatabaseManager {
 
     // Metodă pentru ștergerea unui utilizator din baza de date
     public void deleteUser(int userId) {
-        try {
+        try (Connection connection = openConnection()) {
             PreparedStatement statement = connection.prepareStatement(
                     "DELETE FROM users WHERE id = ?");
             statement.setInt(1, userId);
@@ -63,7 +56,7 @@ public class DatabaseManager {
 
     // Metodă pentru actualizarea adresei de email a unui utilizator în baza de date
     public void updateUserEmail(int userId, String newEmail) {
-        try {
+        try (Connection connection = openConnection()) {
             PreparedStatement statement = connection.prepareStatement(
                     "UPDATE users SET email = ? WHERE id = ?");
             statement.setString(1, newEmail);
@@ -76,7 +69,7 @@ public class DatabaseManager {
 
     // Metodă pentru obținerea unui utilizator după ID-ul său din baza de date
     public User getUserById(int userId) {
-        try {
+        try (Connection connection = openConnection()) {
             PreparedStatement statement = connection.prepareStatement(
                     "SELECT * FROM users WHERE id = ?");
             statement.setInt(1, userId);
@@ -98,7 +91,7 @@ public class DatabaseManager {
     // Metodă pentru obținerea tuturor utilizatorilor din baza de date
     public List<User> getAllUsers() {
         List<User> Users = new ArrayList<>();
-        try {
+        try (Connection connection = openConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
             while (resultSet.next()) {

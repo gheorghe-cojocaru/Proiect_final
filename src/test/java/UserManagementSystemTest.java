@@ -19,10 +19,6 @@ public class UserManagementSystemTest {
         databaseManager = new DatabaseManager();
     }
 
-    @After
-    public void tearDown() {
-        databaseManager.closeConnection();
-    }
 
     @Test
     public void testAdaugareUtilizator() {
