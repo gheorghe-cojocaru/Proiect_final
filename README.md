@@ -1,3 +1,5 @@
+
+```markdown
 # User Management System
 
 A simple Java application for managing user information, with basic functionalities such as adding, deleting, modifying, and displaying users. The application interacts with a MySQL database to store user data.
@@ -50,9 +52,8 @@ The application includes JUnit tests to ensure the correctness of user managemen
 ## Author
 
 Gheorghe Cojocaru
-```
 
-This `README.md` provides a comprehensive yet concise overview of the User Management System project, including setup instructions, functionality, code structure, and testing information.
+---
 
 # Sistem de Management al Utilizatorilor
 
@@ -63,13 +64,20 @@ O aplicație simplă în Java pentru gestionarea informațiilor despre utilizato
 Pentru a rula această aplicație, va trebui să aveți Java și MySQL instalate pe sistemul dumneavoastră.
 
 1. **Clonați repository-ul:**
+   ```sh
+   git clone https://github.com/yourusername/user-management-system.git
+   cd user-management-system
+   ```
 
 2. **Configurați baza de date:**
     - Creați o bază de date MySQL numită `user_management`.
     - Actualizați detaliile de conexiune la bază de date (`URL`, `USERNAME`, `PASSWORD`) în clasa `DatabaseManager`, dacă este necesar.
 
 3. **Compilați și rulați:**
-
+   ```sh
+   javac Main.java
+   java Main
+   ```
 
 ## Funcționalitate
 
@@ -96,8 +104,9 @@ Structura proiectului este organizată astfel:
 
 Aplicația include teste JUnit pentru a asigura corectitudinea operațiilor de gestionare a utilizatorilor. Aceste teste acoperă adăugarea utilizatorilor, ștergerea utilizatorilor, modificarea adreselor de email ale utilizatorilor și obținerea tuturor utilizatorilor.
 
-
 ## Autor
 
 Gheorghe Cojocaru
+```
 
+This `README.md` includes the project description, getting started instructions, functionality, code structure, testing information, and author details in both English and Romanian.
