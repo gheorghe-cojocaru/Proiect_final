@@ -108,4 +108,3 @@ Aplicația include teste JUnit pentru a asigura corectitudinea operațiilor de g
 Gheorghe Cojocaru
 ```
 
-This `README.md` includes the project description, getting started instructions, functionality, code structure, testing information, and author details in both English and Romanian.
