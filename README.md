@@ -1,5 +1,4 @@
 
-```markdown
 # User Management System
 
 A simple Java application for managing user information, with basic functionalities such as adding, deleting, modifying, and displaying users. The application interacts with a MySQL database to store user data.
